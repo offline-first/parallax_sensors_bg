@@ -51,10 +51,10 @@ class Example2 extends StatelessWidget {
               preventCrop: true,
               offset: const Offset(0, -490)),
         ],
-        child: Center(
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
                 'Parallax Demo',
                 style: TextStyle(

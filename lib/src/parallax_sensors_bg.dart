@@ -162,7 +162,7 @@ class Parallax extends StatefulWidget {
   /// The type of sensor to detect the motion can be given through **[sensor]**.
   /// The fixed body of the page can be given through **[child]**.
   const Parallax({
-    Key? key,
+    super.key,
     this.sensor = ParallaxSensor.accelerometer,
     required this.layers,
     this.reverseVerticalAxis = false,
@@ -171,7 +171,7 @@ class Parallax extends StatefulWidget {
     this.lockHorizontalAxis = false,
     this.animationDuration = 300,
     this.child,
-  }) : super(key: key);
+  });
 
   /// Type of the sensor whose detected values will be used for parallax movement
   ///
@@ -252,7 +252,7 @@ class _ParallaxState extends State<Parallax> {
     switch (widget.sensor) {
       case ParallaxSensor.accelerometer:
         _accelerometerSensorEvent =
-            accelerometerEvents.listen((AccelerometerEvent event) {
+            accelerometerEventStream().listen((AccelerometerEvent event) {
           setState(() {
             _maxSensitivity = 10;
             _top = widget.lockVerticalAxis
@@ -281,7 +281,7 @@ class _ParallaxState extends State<Parallax> {
 
       case ParallaxSensor.userAccelerometer:
         _userAccelerometerSensorEvent =
-            userAccelerometerEvents.listen((UserAccelerometerEvent event) {
+            userAccelerometerEventStream().listen((UserAccelerometerEvent event) {
           setState(() {
             _maxSensitivity = 10;
             _top = widget.lockVerticalAxis
@@ -309,7 +309,7 @@ class _ParallaxState extends State<Parallax> {
         break;
 
       case ParallaxSensor.gyroscope:
-        _gyroscopeSensorEvent = gyroscopeEvents.listen((GyroscopeEvent event) {
+        _gyroscopeSensorEvent = gyroscopeEventStream().listen((GyroscopeEvent event) {
           setState(() {
             _maxSensitivity = 10;
             _top = widget.lockVerticalAxis
@@ -338,7 +338,7 @@ class _ParallaxState extends State<Parallax> {
 
       case ParallaxSensor.magnetometer:
         _magnetometerSensorEvent =
-            magnetometerEvents.listen((MagnetometerEvent event) {
+            magnetometerEventStream().listen((MagnetometerEvent event) {
           setState(() {
             _maxSensitivity = 50;
             _top = widget.lockVerticalAxis

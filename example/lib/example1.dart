@@ -45,10 +45,10 @@ class Example1 extends StatelessWidget {
               imageHeight: 150,
               imageFit: BoxFit.fitHeight),
         ],
-        child: Center(
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
                 'Parallax Demo',
                 style: TextStyle(
